@@ -6,35 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Info DashBoard</title>
-    <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <title>Corona Info DashBoard</title>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
     <script src="/assets/js/index.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="left_menu">
-            <a href="/" id="logo">WEATHER INFO</a>
-            <ul class="main_menu">
-                <li>
-                    <a href="#">Overview <span>전체통계</span></a>
-                </li>
-                <li>
-                    <a href="#">Regional <span>지역별통계</span></a>
-                </li>
-                <li>
-                    <a href="#">Vaccine <span>백신접종통계</span></a>
-                </li>
-                <li>
-                    <a href="#">Social Distance <span>사회적거리두기</span></a>
-                </li>
-                <li>
-                    <a href="#">Prediction Info <span>코로나예측정보</span></a>
-                </li>
-            </ul>
-        </div>
+        <%@include file="/WEB-INF/views/includes/menu.jsp"%>
         <div class="dashboard_area">
             <div class="dashboard_content">
                 <div class="content_left">
@@ -87,29 +66,21 @@
                                 <td>신규확진자</td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>서울</td>
-                                <td>68,646</td>
-                                <td>359 ▲</td>
-                            </tr>
-                            <tr>
-                                <td>서울</td>
-                                <td>68,646</td>
-                                <td>359 ▲</td>
-                            </tr>
-                            <tr>
-                                <td>서울</td>
-                                <td>68,646</td>
-                                <td>359 ▲</td>
-                            </tr>
-                        </tbody>
+                        
                     </table>
                     <div class="region_pager_area">
-                        <button>&lt;</button>
-                        <span class="current">1</span> / <span class="total">7</span>
-                        <button>&gt;</button>
+                        <button id="region_prev">&lt;</button>
+                        <span class="current">1</span> / <span class="total">6</span>
+                        <button id="region_next">&gt;</button>
                     </div>
+                </div>
+            </div>
+            <div class="dashboard_content">
+                <div class="content_left">
+                    <canvas id="gen_chart" style="width: 100%; height: 100%;"></canvas>
+                </div>
+                <div class="content_right">
+                    <canvas id="age_chart" style="width: 100%; height: 100%;"></canvas>
                 </div>
             </div>
         </div>
