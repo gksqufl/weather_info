@@ -15,5 +15,4 @@ public class CoronaVaccineInfoVO {
     private String sido;
 
     private String region;
-    
 }

@@ -28,18 +28,21 @@ public class CoronaInfoService {
     }
 
     public CoronaInfoVO selectTodayCoronaInfo() {
-        // Calendar start = Calendar.getInstance();
-        // Calendar end = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        Calendar standard = Calendar.getInstance();
+        standard.set(Calendar.HOUR_OF_DAY, 10);
+        standard.set(Calendar.MINUTE, 30);
+        standard.set(Calendar.SECOND, 00);
 
-        // start.set(Calendar.HOUR_OF_DAY, 10);
-        // start.set(Calendar.MINUTE, 30);
-        // start.set(Calendar.SECOND, 0);
-
-        Date now = new Date();
+        if(now.getTimeInMillis() < standard.getTimeInMillis()) {
+            // 현재 접속시간이 기준시간 (10시30분10초) 보다 이전일 때
+            // 하루 이전 날짜로 변경.
+            now.add(Calendar.DATE, -1);
+        }
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String date = formatter.format(now);
+        String dt = formatter.format(now.getTime());
 
-        CoronaInfoVO data = mapper.selectCoronaInfoByDate(date);
+        CoronaInfoVO data = mapper.selectCoronaInfoByDate(dt);
 
         Integer accExamCnt = data.getAccExamCnt();
         Integer decideCnt = data.getDecideCnt();
