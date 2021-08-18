@@ -18,6 +18,7 @@ import com.weather.vo.CoronaWeeksVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -112,6 +113,18 @@ public class RegionalAPIController {
 
         List<CoronaVaccineWeeksVO> coronaVaccineWeeksList = service.selectRegionalCoronaVaccineTwoWeeks(region, date);
         resultMap.put("coronaVaccineWeeksList", coronaVaccineWeeksList);
+
+        return resultMap;
+    }
+
+    @GetMapping("/api/vaccine/{date}")
+    public Map<String, Object> getVaccineInfoByDate(
+        @PathVariable String date
+        ) {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        List<CoronaVaccineWeeksVO> list = service.selectVaccineInfo(date);
+        resultMap.put("vaccineList", list);
 
         return resultMap;
     }

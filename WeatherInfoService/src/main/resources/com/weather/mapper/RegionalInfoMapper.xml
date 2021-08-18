@@ -55,4 +55,11 @@
         ]]>
         order by regDt asc
     </select>
+    <select id="selectVaccineInfo" resultType="com.weather.vo.CoronaVaccineWeeksVO">
+        select date_sub(date_format(regDt, "%Y-%m-%d"), interval 1 day) date,
+        accFirstCnt, accSecondCnt, firstCnt, secondCnt, sido
+        from corona_vaccine
+        where date_format(regDt, "%Y-%m-%d") = str_to_date(#{date}, "%Y-%m-%d")
+        order by accFirstCnt desc
+    </select>
 </mapper>

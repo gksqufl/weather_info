@@ -145,7 +145,7 @@ $(function() {
                 '<tr>'+
                     '<td>'+r.data[i].gubun+'</td>'+
                     '<td>'+r.data[i].defCnt+'</td>'+
-                    '<td>'+r.data[i].incDec+' ▲</td>'+
+                    '<td>'+r.data[i].incDec+' ▴</td>'+
                 '</tr>'
                 $(".region-tbody").eq(page).append(tag);
             }
